@@ -1,14 +1,16 @@
+// theiotlife.com
+// Charlie Nguyen
 #include <Wire.h>
 #include <LiquidCrystal_PCF8574.h>
 
 //Set I2C address of PCF8574 here
 int PCF8574_Address = 0; //Mine 0x3f
-LiquidCrystal_PCF8574 lcd(PCF8574_Address);  
+LiquidCrystal_PCF8574 lcd(PCF8574_Address);
 String scrollDirection = "none";
 
 void setup() {
   int error;
-  //Setting up Serial Connection for Debugging - 
+  //Setting up Serial Connection for Debugging -
   //If there is something wrong with the LCD then open up serial monitor to see
   Serial.begin(115200);
 
@@ -21,7 +23,7 @@ void setup() {
   	}
 
   }
-  
+
   Serial.println("LCD Starting up!");
 
   //Checks and establishes connection with PCF8574
@@ -37,14 +39,14 @@ void setup() {
   	Serial.print(error);
     Serial.println(": LCD not found.");
     Serial.println("Check if the address to the PCF8574 is correct with an I2CScanner");
-  } 
+  }
   else {
   	Serial.print("Error: ");
   	Serial.print(error);
   	Serial.println("Please refer to 'https://www.arduino.cc/en/Reference/WireEndTransmission' for error details");
   }
 
-  lcd.begin(16, 2); 
+  lcd.begin(16, 2);
 }
 
 void loop() {
